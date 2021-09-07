@@ -4550,7 +4550,7 @@ paper@^0.12.0:
   resolved "https://registry.yarnpkg.com/paper/-/paper-0.12.0.tgz#37397312fda5d0aca057a5735e5eeb631ff5baa4"
   integrity sha512-J4IgSo9g5hdwqEWJOIrl5l0wu2D4JgJmQ/8c/SO7rLKB5POrT5yxWJmXJJ13s2aIQf/Mx9mlCa866BEpvN+gKw==
 
-parcel-bundler@^1.12.3:
+parcel-bundler@1.12.3:
   version "1.12.3"
   resolved "https://registry.yarnpkg.com/parcel-bundler/-/parcel-bundler-1.12.3.tgz#2bbf70bfa2d06097f071653285040bd125684d09"
   integrity sha512-8bq6lj0hhQeGxD9f9xEkFMXQ3d8TIlf2+isKxoi9bciB0KVEILRGllaPkUgp++5t0anToBh9+tG6ZyInXOC1/A==
