@@ -30,7 +30,7 @@
     "slate": "0.44.12",
     "slate-react": "0.21.18",
     "styled-components": "^5.0.0",
-    "unified-stream": "1.0.4",
+    "unified-stream": "2.0.0",
     "vfile-reporter": "5.1.1"
   },
   "devDependencies": {
