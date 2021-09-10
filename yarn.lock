@@ -7346,10 +7346,10 @@ unified-message-control@^1.0.0:
     unist-util-visit "^1.0.0"
     vfile-location "^2.0.0"
 
-unified-stream@1.0.4:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/unified-stream/-/unified-stream-1.0.4.tgz#f0beffe1a8d7f3f9772e549828e5a6bd7474bab3"
-  integrity sha512-00yTNP32NnqdhOt4a8k0Q8bTsG29+n5C2T7vQrmw7orHtPdhq84jPVbYtIxHHczVMA5bOOZpRjvy8SOFqzB/+A==
+unified-stream@1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/unified-stream/-/unified-stream-1.0.6.tgz#0b291d93295eea6ba81db8fa58af660ea45e8865"
+  integrity sha512-04s1S5XCMz5DRMuzioZBSciB2BqCwZX/AaF1/1FuuGunerQd5F6BqbbJZp/GwgSNdWIVv3dcrZZnamHnAEtwmw==
   dependencies:
     once "^1.4.0"
 
