@@ -46,7 +46,7 @@
     "@types/slate": "0.44.0",
     "@types/slate-react": "0.21.1",
     "@types/styled-components": "latest",
-    "parcel-bundler": "1.12.3"
+    "parcel-bundler": "1.12.5"
   },
   "keywords": []
 }
