@@ -154,7 +154,7 @@ function App() {
   const [values, setValues] = useState({
     curve: [-10, 10],
     skew: [-20, 20],
-    segments: [1, 5]
+    segments: [2, 6]
   });
 
   const positions = new Array(200).fill(0).map(() => randomNumber(0, 1700));
