@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "start": "parcel serve src/index.html --open",
-    "build": "parcel build src/index.html"
+    "build": "parcel build src/index.html --public-url ."
   },
   "dependencies": {
     "babel-plugin-styled-components": "^1.13.2",
