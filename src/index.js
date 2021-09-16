@@ -1,23 +1,12 @@
-import React, { useState, createContext, useRef, useLayoutEffect } from "react";
+import React, { useState, createContext, useContext } from "react";
 import ReactDOM from "react-dom";
-import Konva from 'konva';
-
-import Configurator from './components/Configurator';
+import Color from "color";
+import Slider from "rc-slider";
 
 import "./styles.css";
+import "rc-slider/assets/index.css";
 
-
-function randomNumber(min, max) {
-  return min + Math.random() * (max - min);
-}
-
-function randomInt(min, max) {
-  return Math.floor(randomNumber(min, max));
-}
-
-
-
-function grassShape(points) {
+function Grass({ points, x = 0, y = 0 }) {
   const sad = [];
   const sad2 = [];
   const middle = [];
@@ -31,67 +20,128 @@ function grassShape(points) {
     width += 3;
   });
 
-  // const leftPoints = sad.map(([x2, y2]) => `${x2},${y2}`);
-  // const rightPoints = sad2.map(([x2, y2]) => `L ${x2},${y2}`);
-  // const middlePoints = middle.map(([x2, y2]) => `${x2},${y2}`);
+  const leftPoints = sad.map(([x2, y2]) => `L ${x2},${y2}`);
+  const rightPoints = sad2.map(([x2, y2]) => `L ${x2},${y2}`);
+  const middlePoints = middle.map(([x2, y2]) => `${x2},${y2}`);
 
-  return [...sad.reverse(), ...sad2];
+  const svgPoints = [...leftPoints.reverse(), ...rightPoints].join("\n");
+  const color = Color("#94BC5C").darken(randomNumber(0, 0.3));
+  return (
+    <>
+      <path
+        fill={color}
+        stroke={color.darken(0.4)}
+        transform={`translate(${x}, ${y})`}
+        d={`M 0 0 \n${svgPoints}`}
+      />
+      {/*<polyline
+        stroke={color.darken(0.2)}
+        fill="none"
+        strokeWidth="1px"
+        transform={`translate(${x}, ${y})`}
+        points={middlePoints.join(" ")}
+      />*/}
+    </>
+  );
 }
 
-function Canvas() {
-  const canvasRef = useRef();
+function randomNumber(min, max) {
+  return min + Math.random() * (max - min);
+}
 
-  const width = 1000;
-  const height = 800;
+function randomInt(min, max) {
+  return Math.floor(randomNumber(min, max));
+}
 
-  useLayoutEffect(() => {
-    var stage = new Konva.Stage({
-      container: canvasRef.current,
-      width: width,
-      height: height
-    });
+function RandomGrass({
+  x,
+  y,
+  size,
+  skew = randomNumber(-15, 15),
+  curve = randomNumber(-10, 10)
+}) {
+  const pointCount = size || randomInt(4, 6);
 
-    let rect = new Konva.Rect({
-      x: 0,
-      y: 0,
-      width: 100,
-      height: 100,
-      fill: '#000',
-    });
+  let lastHeight = 0;
+  const points = new Array(pointCount).fill(0).map((_, i) => {
+    lastHeight = lastHeight + randomNumber(50, 100);
+    return [
+      randomNumber(-5, 5) + skew * (i + 1) + curve * Math.pow(i + 1, 2),
+      lastHeight
+    ];
+  });
 
-    let grass = new Konva.Shape({
-      x: 100,
-      y: 100,
-      stroke: '#00D2FF',
-      height: 200,
-      width: 200,
-      points: grassShape([[0,0], [100, -100]]),
-      sceneFunc: function (context, shape) {
-        context.beginPath();
-        // don't need to set position of rect, Konva will handle it
-        // context.moveTo(points[0][0], points[0][1]);
-        shape.getAttr('points').forEach(point => {
-          context.lineTo(point[0], point[1]);
-        });
+  return <Grass x={x} y={y} points={[[0, 0], ...points]} />;
+}
 
-        context.
-
-        // context.rect(0, 0, shape.getAttr('width'), shape.getAttr('height'));
-        // context.rect(0, 0, shape.getAttr('width'), shape.getAttr('height'));
-        // (!) Konva specific method, it is very important
-        // it will apply are required styles
-        context.fillStrokeShape(shape);
-      }
-    });
-
-
-    layer.add(grass);
-    stage.add(layer);
-  }, []);
+function ConfiguredGrass({ x, y }) {
+  const config = useContext(ConfigContext);
 
   return (
-    <div width={width} height={height} ref={canvasRef}>
+    <RandomGrass
+      x={x}
+      y={y}
+      curve={randomNumber(config.curve[0], config.curve[1])}
+      size={randomInt(config.segments[0], config.segments[1])}
+      skew={randomNumber(config.skew[0], config.skew[1])}
+    />
+  );
+}
+function marks(min, max) {
+  const points = [];
 
+  for (let i = Math.ceil(min / 10); Math.floor(i * 10) <= max; i += 1) {
+    points[`${i * 10}`] = `${i * 10}`;
+  }
+
+  return points;
+}
+
+function Configurator({ options, values, onChange }) {
+  return (
+    <div
+      style={{
+        position: "fixed",
+        right: "0",
+        padding: "20px 40px",
+        top: "0",
+        maxWidth: "100%",
+        width: "400px",
+        textAlign: "left"
+      }}
+    >
+      {options.map(option => {
+        const value = values[option.name];
+
+        return (
+          <div style={{ marginBottom: "2.5rem" }}>
+            <div
+              style={{
+                fontSize: "12px",
+                fontWeight: "bold",
+                marginBottom: "0.5rem",
+                display: "flex",
+                justifyContent: "space-between"
+              }}
+            >
+              <div>{option.name}</div>
+              <div style={{ color: "#aaa" }}>
+                {value[0]} - {value[1]}
+              </div>
+            </div>
+            <Slider.Range
+              min={option.min || -20}
+              max={option.max || 20}
+              step={option.step || 1}
+              marks={marks(option.min || -20, option.max || 20)}
+              value={value}
+              onChange={value => {
+                onChange({ ...values, [option.name]: value });
+              }}
+            />
+          </div>
+        );
+      })}
     </div>
   );
 }
@@ -99,6 +149,8 @@ function Canvas() {
 const ConfigContext = createContext(null);
 
 function App() {
+  //<Grass points={[[20, 0], [10, 200], [15, 500], [12, 800]]} />
+
   const [values, setValues] = useState({
     curve: [-10, 10],
     skew: [-20, 20],
@@ -118,8 +170,15 @@ function App() {
           values={values}
           onChange={setValues}
         />
+        <svg
+          style={{ height: "1000px", width: "100%" }}
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          {positions.map((pos, i) => (
+            <ConfiguredGrass key={i} x={pos} y={1000} />
+          ))}
+        </svg>
       </div>
-      <Canvas />
     </ConfigContext.Provider>
   );
 }
