@@ -3,7 +3,7 @@ node_modules
 
 # Parcel
 dist
-.cache
+.parcel-cache
 
 # Visual Studio Code
 .vscode

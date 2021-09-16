@@ -2,9 +2,8 @@
   "name": "grass-generator",
   "version": "1.0.0",
   "description": "",
-  "main": "index.html",
   "scripts": {
-    "start": "parcel src/index.html --open",
+    "start": "parcel serve src/index.html --open",
     "build": "parcel build src/index.html"
   },
   "dependencies": {
@@ -25,7 +24,7 @@
     "@types/react": "^17.0.21",
     "@types/react-dom": "^17.0.9",
     "@types/styled-components": "latest",
-    "parcel-bundler": "^1.12.3"
+    "parcel": "^2.0.0-rc.0"
   },
   "keywords": []
 }
