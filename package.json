@@ -12,8 +12,8 @@
     "konva": "8.3.5",
     "nanoid": "3.3.2",
     "rc-slider": "9.7.5",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
+    "react": "18.0.0",
+    "react-dom": "18.0.0",
     "styled-components": "5.3.5"
   },
   "devDependencies": {
