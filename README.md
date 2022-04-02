@@ -6,7 +6,7 @@
 
 ## Play with it
 
-An instance is running at [phlmn.github.io/grass-generator](https://phlmn.github.io/grass-generator/). Have fun!
+There is an instance running at [phlmn.github.io/grass-generator](https://phlmn.github.io/grass-generator/). Have fun!
 
 ## Hack on it
 
