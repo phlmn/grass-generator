@@ -4,6 +4,10 @@
 
 ![screenshot of grass-generator](screenshot.png)
 
+## Play with it
+
+An instance is running at [phlmn.github.io/grass-generator](https://phlmn.github.io/grass-generator/). Have fun!
+
 ## Hack on it
 
 * `npm start` spins up a parcel dev server
