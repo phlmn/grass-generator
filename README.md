@@ -1,6 +1,6 @@
 # <div align="center">`grass-generator`</div>
 
-<p align="center">A small playground to test procedually generated grass.</p>
+<p align="center">A small playground to test procedurally generated grass.</p>
 
 ![screenshot of grass-generator](screenshot.png)
 
