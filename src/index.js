@@ -1,5 +1,5 @@
 import React, { useState, createContext, useContext } from "react";
-import ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client";
 import Color from "color";
 import Slider from "rc-slider";
 
@@ -210,5 +210,5 @@ function App() {
   );
 }
 
-const rootElement = document.getElementById("app");
-ReactDOM.render(<App />, rootElement);
+const reactRoot = createRoot(document.getElementById("app"));
+reactRoot.render(<App />);
