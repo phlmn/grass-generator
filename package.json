@@ -1,6 +1,7 @@
 {
   "name": "grass-generator",
   "version": "1.0.0",
+  "license": "MIT",
   "scripts": {
     "start": "parcel serve src/index.html --open",
     "build": "parcel build src/index.html --public-url ."
