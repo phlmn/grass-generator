@@ -140,7 +140,8 @@ function Configurator({ options, values, onChange }) {
               </div>
             </div>
             {type === 'range' && (
-              <Slider.Range
+              <Slider
+                range
                 min={option.min || -20}
                 max={option.max || 20}
                 step={option.step || 1}
