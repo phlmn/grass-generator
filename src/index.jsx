@@ -73,13 +73,15 @@ function App() {
   });
 
   const [height, setHeight] = useState(1000);
+  const [width, setWidth] = useState(1700);
   const svgRef = useRef();
 
   useLayoutEffect(() => {
     setHeight(svgRef.current.clientHeight);
+    setWidth(svgRef.current.clientWidth);
   });
 
-  const positions = new Array(values.amount).fill(0).map(() => randomNumber(0, 1700));
+  const positions = new Array(values.amount).fill(0).map(() => randomNumber(0, width));
 
   return (
     <ConfigContext.Provider value={values}>
