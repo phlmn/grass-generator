@@ -73,11 +73,9 @@ function App() {
   });
 
   const [height, setHeight] = useState(1000);
-
   const svgRef = useRef();
 
   useLayoutEffect(() => {
-    console.log(svgRef.current.clientHeight);
     setHeight(svgRef.current.clientHeight);
   });
 
