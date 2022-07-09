@@ -10,8 +10,8 @@
     "@babel/runtime": "7.17.9",
     "color": "4.2.3",
     "rc-slider": "10.0.0",
-    "react": "18.1.0",
-    "react-dom": "18.1.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
     "styled-components": "5.3.5"
   },
   "devDependencies": {
