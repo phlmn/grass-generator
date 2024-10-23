@@ -10,14 +10,14 @@
     "@babel/runtime": "7.19.4",
     "color": "4.2.3",
     "rc-slider": "10.1.1",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
     "styled-components": "5.3.6"
   },
   "devDependencies": {
     "@babel/core": "7.19.3",
-    "@types/react": "18.0.21",
-    "@types/react-dom": "18.0.9",
+    "@types/react": "18.3.12",
+    "@types/react-dom": "18.3.1",
     "@types/styled-components": "5.1.26",
     "babel-plugin-styled-components": "2.0.7",
     "parcel": "2.7.0"
